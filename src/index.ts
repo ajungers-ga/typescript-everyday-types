@@ -161,3 +161,30 @@ interface Coord {
 //   bear.honey;
          
 
+// 7.0 — Everyday Types: Optional Properties
+
+
+// ? = an indication that this proptery might be missing
+// 7.1 Interface with an optional property (last name may not always be present)
+interface Person {
+    first: string;
+    last?: string; // optional property represented by ? - means the property might be missing
+  }
+  
+  // 7.2 Function safely checks for the optional value
+  function printName(person: Person): void {
+    // Safe way to access an optional property using a check
+    if (person.last !== undefined) {
+      console.log("Full Name:", person.first, person.last.toUpperCase());
+    } else {
+      console.log("First Name Only:", person.first);
+    }
+  
+    // Modern JS shortcut: optional chaining (safe & clean)
+    console.log("Last (safe):", person.last?.toUpperCase());
+  }
+  
+  // 7.3 Test with both forms
+  printName({ first: "Jon" }); // no last name
+  printName({ first: "Arya", last: "Stark" }); // full name
+  
