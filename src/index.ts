@@ -1,4 +1,4 @@
-// Primitives: string, number, boolean
+// Primitive types: string, number, boolean
 // string  = text like "hello world"
 // number  = all numeric values (no separate int or float in JS)
 // boolean = true or false values only
@@ -216,9 +216,82 @@ interface User {
   // 8.4 Use the extended type
   const jon: Admin = {
     username: "kingInTheNorth",
-    email: "jon@nightswatch.com",
+    email: "jon@nightswatch.com", // Return a 'Jon no longer is employed here' console.log ;)
     isSuperAdmin: false,
   };
   
   showAdmin(jon);
   
+
+
+// SECTION 9 is commented out because it requires a browser enviorment, its screwing up my terminal when running
+// ----- npx tsc & node dist/index.js -----
+
+
+// 9.0 — Everyday Types: Type Assertions
+// Type assertions manually tell TS what the TYPE of a value is, even if/when TS cant INFER it correctly. This gives...
+/// ... more control when accessing DOM elements, working with APIs or NARROWING TYPES when TS inst confident
+//// TS trusts these ASSERTIONS, so it will SKIP safety checks and ASSUME the type, based on assertions inserted below
+
+
+// 9.1 Use 'as' to TELL TypeScript what type we expect the value to be
+/// By default getElementByID returns generic element
+//// TS will throw an error if trying to access inputE1 bc it DOES NOT know the element is an input...
+///// ... using AS HTMLInputElement tells TS 'chill out my guy, i know what this is' ...
+////// ... so that .value can be accessed safely
+/////// Without the assertion BELOW , TS would throw an error trying to access 'value' on a generic HTMLElement
+
+// const inputEl = document.getElementById("main_input") as HTMLInputElement; 
+// console.log("Input value is:", inputEl.value);
+
+
+
+// 9.2 — Everyday Types: 'as const' assertion on a value
+// TS normally infers a string like below as type 'string' — meaning ANY string
+// But sometimes you want to lock this in as ONE specific value (a literal) so TS treats it as "left" instead of just string
+
+// const direction = "left" as const; // 'as const' locks this into being the literal "left"
+// console.log("Direction locked as:", direction); // TS knows this is exactly "left", not any other string
+
+
+
+// 9.3 — Alternate syntax for type assertion (angle bracket syntax)
+// This achieves the SAME result as 'as', but uses angle brackets
+// This ONLY works in .ts files — it will break in .tsx files used by React
+
+// const canvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+// console.log("Canvas width is:", canvas.width);
+
+
+// ABOVE = Assertions help clarify what kind of DOM element, the syntax above is an ALTERNATIVE to 'as', w
+// which is more useful when not working in react. In react his will cause a parsing error because <> is interperted as a jsx element
+
+
+
+// 9.4 — Non-null assertion operator (!)
+// This tells TS: "I KNOW this value is not null or undefined"
+// Used when there is certainty that the element exists on the page
+// TS skips null-checking which is why i must be certain it actually exists
+
+// const usernameField = document.getElementById("username")!;
+// console.log("Username element tag:", usernameField.tagName);
+
+
+
+
+
+// 9.5 — Literal Type Assertion with 'as const'
+// TS normally infers "left" as a general string, which allows reassignment
+// Using 'as const' locks it in as the literal string type "left" (no reassignment allowed)
+
+// const direction = "left" as const;
+
+// // direction = "right"; // would cause TS error: can't reassign a literal type
+// console.log("Direction is locked as:", direction);
+
+
+// as const = defining left as the ONLY DIRECTION allowed. Now TS locks down the EXACT LITERAL type 'left'
+/// without as const: TS thinks the variabnle CAN BE CHANGED, so it types as a general string
+//// using as const will allow me to make more specific types.
+
+
