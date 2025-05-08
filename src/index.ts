@@ -33,7 +33,6 @@ console.log("Verified:", isVerified);
 
 // 2.0 — Everyday Types: arrays, unions, narrowing
 
-
 // 2.1 Arrays — using type[]
 let scores: number[] = [88, 92, 76, 95];         // im defining scores as an array of numbers
 let names: string[] = ["Arya", "Bran", "Sansa"]; // im defining names as an array of strings
@@ -59,5 +58,25 @@ function printId(id: number | string): void {
 
 
 
+// 4.0 — Everyday Types: Type Narrowing
+
+// 4.1 TS uses narrowing to safely operate on union types
+function handleInput(input: number | string): void {
+    // Narrowing using typeof — this tells TS we're in a string block
+    if (typeof input === "string") {
+      console.log("Uppercased input:", input.toUpperCase()); // valid on string
+    } else {
+      // If it's not a string, TS knows it must be a number
+      console.log("Doubled input:", input * 2); // doubling the input number
+    }
+  }
+  handleInput(10);      // number logic
+  handleInput("hello"); // string logic
+
+// 66-67 - if its a string, treatit like a string inside this block, then proceed with the uppercase
+// 68-70 - if its a number, we can safely do a math operation like doubling, dividing, adding etc
+
+// we wouldnt be able to DOUBLE a string or UPPERCASE a number, so this typeof only works on strings. 
+// if its not a string, TS knows it must be a number
 
 
