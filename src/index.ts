@@ -3,7 +3,7 @@
 // number  = all numeric values (no separate int or float in JS)
 // boolean = true or false values only
 
-// Note: Capitalized versions (String, Number, Boolean) exist but are rarely used — stick to lowercase.
+// Note from lesson: Capitalized versions (String, Number, Boolean) exist but are rarely used — stick to lowercase.
 
 // 1.0 — Everyday Types: Primitives
 
