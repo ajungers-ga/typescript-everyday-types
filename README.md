@@ -22,5 +22,5 @@ Each section is clearly numbered in `index.ts` with logic-based examples and com
 - [Lesson 1: TypeScript in 5 Minutes](https://github.com/ajungers-ga/typescript-intro-node)
 - **Current Lesson**: TypeScript Everyday Types (this repo)
 
-- LAB Link tbd
+- LAB Link (https://github.com/ajungers-ga/ts-terminal-game)
 ---
