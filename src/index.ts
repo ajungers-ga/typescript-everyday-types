@@ -43,7 +43,18 @@ let names: string[] = ["Arya", "Bran", "Sansa"]; // im defining names as an arra
 
 
 
+// 3.0 — Everyday Types: Union Types ( | = UNION TYPE OPERATOR in TS) creates flexibility in function inputs
 
+// 3.1 Union type allows this function to have a value of number OR string. 
+// TS expects VOID label if not using RETURN 
+// If this function used a return, i would specify the return TYPE, like string or number instead of VOID
+function printId(id: number | string): void { 
+    console.log("Your ID is:", id);
+  }
+  
+  printId(12345);   // practical way of printing id (numbers only), but what if an id had letters too...?
+  printId("A567Z"); // using a string here is nice becuase it allows numbers AND letters
+  
 
 
 
