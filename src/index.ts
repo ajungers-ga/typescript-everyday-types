@@ -129,6 +129,7 @@ interface Coord {
   // 6.3 Call the function with a matching object
   logCoord({ x: 34, y: 72 });
   
+  // INTERFACE EXTENSIONS CAN BE FOUND ON 7 & 8
 
   // Notes continued: ---- Differences Between Type Aliases and Interfaces ----
   // the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
@@ -187,4 +188,37 @@ interface Person {
   // 7.3 Test with both forms
   printName({ first: "Jon" }); // no last name
   printName({ first: "Arya", last: "Stark" }); // full name
+  
+
+
+
+
+  // 8.0 — Everyday Types: Interface Extension
+
+// 8.1 Base interface
+interface User {
+    username: string;
+    email: string;
+  }
+  
+  // 8.2 Extended interface (inherits from User)
+  interface Admin extends User {
+    isSuperAdmin: boolean;
+  }
+  
+  // 8.3 Function that accepts the extended Admin type
+  function showAdmin(admin: Admin): void {
+    console.log("Admin Username:", admin.username);
+    console.log("Email:", admin.email);
+    console.log("Super Admin:", admin.isSuperAdmin ? "Yes" : "No");
+  }
+  
+  // 8.4 Use the extended type
+  const jon: Admin = {
+    username: "kingInTheNorth",
+    email: "jon@nightswatch.com",
+    isSuperAdmin: false,
+  };
+  
+  showAdmin(jon);
   
