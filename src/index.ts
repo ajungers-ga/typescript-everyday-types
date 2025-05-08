@@ -31,7 +31,7 @@ console.log("Verified:", isVerified);
 
 
 
-// 2.0 — Everyday Types: arrays, unions, narrowing
+// 2.0 — Everyday Types: arrays
 
 // 2.1 Arrays — using type[]
 let scores: number[] = [88, 92, 76, 95];         // im defining scores as an array of numbers
@@ -79,4 +79,85 @@ function handleInput(input: number | string): void {
 // we wouldnt be able to DOUBLE a string or UPPERCASE a number, so this typeof only works on strings. 
 // if its not a string, TS knows it must be a number
 
+
+
+
+// 5.0 — Everyday Types: Type Aliases
+
+// From The Lesson Notes: 
+// its common to want to use the SAME type MORE than once and refer to it by a SINGLE name
+// A type alias is exactly that - a name for any type.
+// Below im giving a name to a SHAPE (in this case: Point)
+
+// 5.1 A type alias lets you create a reusable name for a custom type
+type Point = {
+    x: number;
+    y: number;
+  };
+  
+  // 5.2 Use the alias in a function parameter
+  function printCoord(pt: Point): void {
+    console.log("X:", pt.x);
+    console.log("Y:", pt.y);
+  }
+  
+  // 5.3 Call the function using the custom type alias
+  printCoord({ x: 100, y: 200 });
+  
+
+
+
+// 6.0 — Everyday Types: Interfaces
+
+// From the Lesson Notes:
+// An interface declaration is another way to name an object type. Just like ising alias above, works as if an anonymous obj type
+// TypeScript is only concerned with the structure of the valuie bneing passed to printCoord, its only looking for the EXPECTED props
+
+
+// 6.1 Interfaces define the shape of an object, just like type aliases
+interface Coord {
+    x: number;
+    y: number;
+  }
+  
+  // 6.2 You can use the interface in a function, just like a type alias
+  function logCoord(coord: Coord): void {
+    console.log("X value is:", coord.x);
+    console.log("Y value is:", coord.y);
+  }
+  
+  // 6.3 Call the function with a matching object
+  logCoord({ x: 34, y: 72 });
+  
+
+  // Notes continued: ---- Differences Between Type Aliases and Interfaces ----
+  // the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+
+// extending an interface example BELOW
+// interface Animal {
+//     name: string;
+//   }
+  
+//   interface Bear extends Animal {
+//     honey: boolean;
+//   }
+  
+//   const bear = getBear();
+//   bear.name;
+//   bear.honey;
+          
+// extending a type via INTERSECTIONS BELOW
+
+// type Animal = {
+//     name: string;
+//   }
+  
+//   type Bear = Animal & { 
+//     honey: boolean;
+//   }
+  
+//   const bear = getBear();
+//   bear.name;
+//   bear.honey;
+         
 
