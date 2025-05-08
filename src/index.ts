@@ -1,3 +1,11 @@
+// FILE PURPOSE: Typescript Everyday Types walkthrough — 
+// covers primitives, arrays, unions, narrowing, type aliases, interfaces, optional props, interface extension, 
+// type assertions, and literal types (based on TS official lesson)
+
+
+
+// 1.0 — Everyday Types: Primitives
+
 // Primitive types: string, number, boolean
 // string  = text like "hello world"
 // number  = all numeric values (no separate int or float in JS)
@@ -5,7 +13,7 @@
 
 // Note from lesson: Capitalized versions (String, Number, Boolean) exist but are rarely used — stick to lowercase.
 
-// 1.0 — Everyday Types: Primitives
+
 
 // 1.1 Explicit type annotations
 let username: string = "Alex"; // string = text inside "" - that represents username
@@ -224,6 +232,9 @@ interface User {
   
 
 
+
+
+
 // SECTION 9 is commented out because it requires a browser enviorment, its screwing up my terminal when running
 // ----- npx tsc & node dist/index.js -----
 
@@ -295,3 +306,43 @@ interface User {
 //// using as const will allow me to make more specific types.
 
 
+
+
+
+
+
+// 10.0 — Everyday Types: Literal Types
+// Literal types = a way to TELL TS to treat a value as a specific, unchangeable constant (not just a generic string/number/etc)
+
+
+// 10.1 — Literal STRING type
+// This variable can ONLY be the value "left" — not any other string
+let alignment: "left" = "left";
+
+// alignment = "right"; // TS will throw error: Type '"right"' is not assignable to type left
+
+
+// 10.2 — Union of string literals as accepted function inputs
+// This function ONLY accepts one of these 3 exact values — left, right, or center
+function printAlignment(value: "left" | "right" | "center"): void {
+  console.log("Alignment is:", value);
+}
+
+printAlignment("left");   // allowed, it's in the union
+printAlignment("center"); // allowed too
+// printAlignment("justify"); // not part of union — TS will throw an error
+
+
+
+// 10.3 — Litteral NUMBER return types
+// This function returns only -1, 0, or 1 — TS locks it down to just those numbers
+function compareStrings(a: string, b: string): -1 | 0 | 1 {
+  if (a === b) return 0;
+  return a > b ? 1 : -1;
+}
+
+console.log(compareStrings("Jon", "Arya")); // shows 1, 0, or -1 depending on sort order
+
+
+// Litteral types are useful for: fixed command options, strict API, and switch case style logic
+// Instead of ANY string/number, i can define a specific known subset of acceptable values
