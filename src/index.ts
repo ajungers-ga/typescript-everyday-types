@@ -3,7 +3,7 @@
 // number  = all numeric values (no separate int or float in JS)
 // boolean = true or false values only
 
-// Note: Capitalized versions (String, Number, Boolean) exist but are rarely used — stick to lowercase.
+// Note from lesson: Capitalized versions (String, Number, Boolean) exist but are rarely used — stick to lowercase.
 
 // 1.0 — Everyday Types: Primitives
 
@@ -26,3 +26,27 @@ console.log("Enrolled?", isEnrolled);
 console.log("City:", city);
 console.log("ZIP:", zip);
 console.log("Verified:", isVerified);
+
+
+
+
+
+// 2.0 — Everyday Types: arrays, unions, narrowing
+
+
+// 2.1 Arrays — using type[]
+let scores: number[] = [88, 92, 76, 95];         // im defining scores as an array of numbers
+let names: string[] = ["Arya", "Bran", "Sansa"]; // im defining names as an array of strings
+
+// printNames([]);
+
+
+
+
+
+
+
+
+
+
+
